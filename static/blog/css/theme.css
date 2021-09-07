@@ -1,0 +1,161 @@
+@font-face {
+  font-family: "B Kamran Bold_0";
+  src: url("B Kamran Bold_0.eot");
+  src: url("B Kamran Bold_0.eot?#iefix") format("embedded-opentype"),
+    url("B Kamran Bold_0.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Shabnam";
+  src: url("Shabnam-FD.eot") format("eot"),
+    url("Shabnam-Light-FD.ttf") format("truetype"),
+    url("Shabnam-Light-FD.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  font-family: "Shabnam", "B Kamran Bold_0", "b koodak" !important;
+  text-align: right;
+  direction: rtl;
+}
+.p {
+  padding-bottom: 50px;
+  padding-left: 50px;
+}
+nav {
+  direction: rtl;
+}
+.actions{
+  display: unset !important
+}
+/*!
+   * Bootstrap v3.4.0 (https://getbootstrap.com/)
+   * Copyright 2011-2018 Twitter, Inc.
+   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+   */
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+header {
+  margin: 0;
+  background-color: #fff;
+  padding-right: 0px !important;
+  padding-top: 0px !important;
+}
+#header {
+  size: 967px 72px;
+  background-color: #fff;
+  margin: 0;
+  display: flex;
+  direction: rtl !important;
+  text-align: right;
+  flex-wrap: wrap;
+  position: relative;
+  align-items: center;
+  align-content: center;
+  font-style: inherit;
+  font-weight: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  vertical-align: baseline;
+  box-sizing: inherit;
+}
+a {
+  background-color: transparent;
+  text-decoration: none;
+}
+.ast-container:before,
+.ast-row:after,
+.ast-row:before,
+.clear:after,
+.clear:before,
+.sidebar-main:after,
+.sidebar-main:before,
+.site-content:after,
+.site-content:before,
+.site-footer:after,
+.site-footer:before,
+.site-header:after,
+.site-header:before,
+.site-main:after,
+.site-main:before {
+  content: "";
+  display: table;
+}
+#primary:after,
+#secondary:after,
+.ast-container:after,
+.ast-row:after,
+.clear:after,
+.sidebar-main:after,
+.site-content:after,
+.site-footer:after,
+.site-header:after,
+.site-main:after {
+  clear: both;
+}
+.ast-container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+*,
+:after,
+:before {
+  box-sizing: inherit;
+}
+#site {
+  color: #198bea;
+}
+#body {
+  direction: rtl;
+  padding-right: 15px;
+  font-family: "Shabnam", "B Kamran Bold_0", "b koodak";
+}
+body {
+  font-family: "Shabnam", "B Kamran Bold_0", "b koodak";
+  margin: 0;
+  background: #f5f5f5;
+  direction: rtl;
+}
+hr {
+  --divider-border-style: solid;
+  --divider-border-color: #193ce3;
+  --divider-border-width: 2px;
+}
+p,time{
+  color:#808285;
+}
+.post_list {
+  display: flex;
+  align-content: space-between;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+.post {
+  margin-bottom:0;
+}
+
+.post h2 a,
+.post h2 a:visited {
+  color: #000000;
+}
+
+.post > .date,
+.post > .actions {
+  float: right;
+}
+hr {
+  border: none;
+  height: 5px;
+  /* Set the hr color */
+  color: rgb(17, 74, 197); /* old IE */
+  background-color: #333; /* Modern Browsers */
+}
+.post_detail{
+  width: 200%;
+}

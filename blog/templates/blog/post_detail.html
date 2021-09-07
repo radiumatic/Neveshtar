@@ -1,0 +1,32 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+
+        
+
+<div class="post_list">
+    <article class="post" style="width: 25em;">
+        <aside class="actions">
+            <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}">
+                <svg version="1.1" id="Icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                viewBox="0 0 250 250" enable-background="new 0 0 250 250" xml:space="preserve">
+                    <use 
+                      href="{% static 'icons/pencil-fill.svg' %}"
+                    >
+                    </use>
+                  </svg>
+            </a>
+        </aside>
+        <div class="post_detail">
+        {% if post.published_date %}
+            <time class="date">
+                {{ post.published_date }}
+            </time>
+            <hr style="width: 50%;">
+        {% endif %}
+        <h2 class="post_title ppp">{{ post.title }}</h2>
+        <hr style="width: 50%;">
+        <p>{{ post.text|linebreaksbr }}</p>
+    </article>
+{% endblock %}
+</div>
