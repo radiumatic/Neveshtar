@@ -1,1 +1,1 @@
-static/admin/*.* linguist-vendored
+*.js linguist-vendored
