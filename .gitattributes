@@ -1,3 +1,6 @@
 static/admin/*.* linguist-detectable false
 static/admin/*.js linguist-detectable false
 static/admin/*.css linguist-detectable false
+static/admin/*.* linguist-vendored
+static/admin/*.js linguist-vendored
+static/admin/*.css linguist-vendored
