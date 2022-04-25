@@ -159,3 +159,5 @@ db.sqlite3
 blog/migrations/__init__.py
 blog/migrations/0001_initial.py
 blog/migrations/0002_post_meta_description.py
+.venv/*
+static/*
