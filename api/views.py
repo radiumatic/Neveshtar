@@ -1,5 +1,4 @@
 from blog.models import Post, Like
-from models import Like
 from django.http import HttpResponse
 import json
 from django.views.decorators.csrf import csrf_exempt
