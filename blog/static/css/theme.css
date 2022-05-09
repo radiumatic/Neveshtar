@@ -1,17 +1,17 @@
 @font-face {
   font-family: "B Kamran Bold_0";
-  src: url("B Kamran Bold_0.eot");
-  src: url("B Kamran Bold_0.eot?#iefix") format("embedded-opentype"),
-    url("B Kamran Bold_0.woff2") format("woff2");
+  src: url("../fonts/B Kamran Bold_0.eot");
+  src: url("../fonts/B Kamran Bold_0.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/B Kamran Bold_0.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Shabnam";
-  src: url("Shabnam-FD.eot") format("eot"),
-    url("Shabnam-Light-FD.ttf") format("truetype"),
-    url("Shabnam-Light-FD.woff") format("woff");
+  src: url("../fonts/Shabnam-FD.eot") format("eot"),
+    url("../fonts/Shabnam-Light-FD.ttf") format("truetype"),
+    url("../fonts/Shabnam-Light-FD.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -158,4 +158,8 @@ hr {
 }
 .post_detail{
   width: 200%;
+}
+#PostContent{
+  /* set a specific width */
+  width: 100%;
 }

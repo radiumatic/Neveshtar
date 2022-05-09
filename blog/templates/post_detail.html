@@ -1,4 +1,4 @@
-{% extends 'blog/base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 {% block content %}
 
@@ -8,7 +8,7 @@
     <article class="post" style="width: 25em;">
         <aside class="actions">
             <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}">
-               <img src="{% static 'blog/pencil-fill.svg' %}" alt="Edit" />
+               <img src="{% static 'icons/pencil-fill.svg' %}" alt="Edit" />
             </a>
         </aside>
         <div class="post_detail">
