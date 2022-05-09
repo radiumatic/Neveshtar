@@ -5,3 +5,7 @@ color: #C25100;
 body{
 direction:rtl;
 }
+#PostContent{
+    /* set a specific width */
+    width: 100%;
+}
