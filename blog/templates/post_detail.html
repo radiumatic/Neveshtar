@@ -16,11 +16,11 @@
             <time class="date">
                 {{ post.published_date }}
             </time>
-            <hr style="width: 50%;">
+            <hr>
         {% endif %}
         <h2 class="post_title ppp">{{ post.title }}</h2>
-        <hr style="width: 50%;">
-        <p id="PostContent">{{ post.text|linebreaksbr }}</p>
+        <hr>
+        <p>{{ post.text|linebreaksbr }}</p>
     </article>
 {% endblock %}
 </div>

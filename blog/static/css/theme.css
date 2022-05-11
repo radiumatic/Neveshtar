@@ -110,9 +110,9 @@ a {
   color: #198bea;
 }
 #body {
-  direction: rtl;
-  padding-right: 15px;
+  direction: rtl;  
   font-family: "Shabnam", "B Kamran Bold_0", "b koodak";
+  width: 100%;
 }
 body {
   font-family: "Shabnam", "B Kamran Bold_0", "b koodak";
@@ -135,6 +135,9 @@ p,time{
   justify-content: space-between;
   align-items: flex-end;
   flex-wrap: wrap;
+  padding-right: 15px;
+  padding-left: 15px;
+  width: auto;
 }
 .post {
   margin-bottom:0;
@@ -157,12 +160,20 @@ hr {
   background-color: #333; /* Modern Browsers */
 }
 .post_detail{
-  width: 200%;
-}
-#PostContent{
-  /* set a specific width */
   width: 100%;
+  word-wrap: break-word;
 }
 #Post{
   width: 100%;
+  padding-left: 25px;
+}
+.post-12{
+  padding: 3.34em 1em;
+  border-bottom: 0;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+  margin-top: 60;
+  display: block;
+  box-sizing: inherit;
+  border-radius: 25px;
 }
