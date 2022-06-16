@@ -187,6 +187,7 @@ hr {
   width: 100%;
   border-radius: 15px;
   padding: 15px;
+  margin-bottom: 15px;
 }
 .comments-text{
   color: #0781c7;
