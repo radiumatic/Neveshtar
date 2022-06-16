@@ -1,16 +1,20 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load markdown_extras %}
+{% load writer_auth %}
 {% block content %}
 
         
 
 <div class="post_list">
     <article id="Post">
-        <aside class="actions">
-            <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}">
-               <img src="{% static 'icons/pencil-fill.svg' %}" alt="Edit" />
-            </a>
-        </aside>
+        {% if user|has_group:"Writers" %}
+            <aside class="actions">
+                <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}">
+                   <img src="{% static 'icons/pencil-free-icon-font.svg' %}" alt="Edit" id="edit_icon"/>
+                </a>
+            </aside>
+        {% endif %}
         <div class="post_detail">
         {% if post.published_date %}
             <time class="date">
@@ -20,7 +24,26 @@
         {% endif %}
         <h2 class="post_title ppp">{{ post.title }}</h2>
         <hr>
-        <p>{{ post.text|linebreaksbr }}</p>
+        <p>{{ post.text | markdown | safe }}</p>
+        <hr>
+        <p>{{ post.likes_amount }} لایک، {{ post.comments_amount }} کامنت</p>
+        <hr>
+        {% if comments %}
+            <h3>کامنت ها</h3>
+            <div class="comments">
+            {% for comment in comments %}
+                <div class="comment">
+                    <p class="comments-text"> {{ comment.user.username }} </p>
+                    <p class="comments-text">{{ comment.text }}</p>
+                    <time class="date comments-text">
+                        {{ comment.created_date }}
+                    </time>
+                </div>
+            {% endfor %}
+            </div>
+        {% endif %}
     </article>
+
+
 {% endblock %}
 </div>

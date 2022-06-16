@@ -1,4 +1,4 @@
-from blog.models import Post, Like
+from blog.models import Post, Like, Comment
 from django.http import HttpResponse
 import json
 from django.views.decorators.csrf import csrf_exempt
@@ -19,7 +19,7 @@ def add_like(request, pk):
     except Exception as e:
         status['status'] = "Error"
         status['message'] = str(e)
-        return HttpResponse(json.dumps(status), content_type="application/json")
+        return HttpResponse(json.dumps(status), content_type="application/json", status=500)
 @login_required
 @require_POST
 def add_comment(request):
@@ -37,9 +37,10 @@ def add_comment(request):
         else:
             status['status'] = "Error"
             status['message'] = "Invalid form"
-            return HttpResponse(json.dumps(status), content_type="application/json")
+            return HttpResponse(json.dumps(status), content_type="application/json", status=400)
     except Exception as e:
         status['status'] = "Error"
         status['message'] = str(e)
-        return HttpResponse(json.dumps(status), content_type="application/json")
+        return HttpResponse(json.dumps(status), content_type="application/json", status=500)
+
 

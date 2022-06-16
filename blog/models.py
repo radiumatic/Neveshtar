@@ -17,11 +17,18 @@ class Post(models.Model):
     def publish(self):
         self.published_date = timezone.now()
         self.save()
+    @property
+    def likes_amount(self):
+        return self.like_set.all().count()
+    @property
+    def comments_amount(self):
+        return self.comment_set.all().count()
+        
 
     def __str__(self):
         return self.title
 class Comment(models.Model):
-    post = models.ForeignKey(Post,on_delete=models.CASCADE,related_name='comments')
+    post = models.ForeignKey(Post,on_delete=models.CASCADE)
     user = models.ForeignKey('auth.User',on_delete=models.CASCADE)
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
@@ -31,7 +38,7 @@ class Comment(models.Model):
         return self.text
  
 class Like(models.Model):
-    post = models.ForeignKey(Post,on_delete=models.CASCADE,related_name='likes')
+    post = models.ForeignKey(Post,on_delete=models.CASCADE)
     user = models.ForeignKey('auth.User',on_delete=models.CASCADE)
 
 

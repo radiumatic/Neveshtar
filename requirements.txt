@@ -16,3 +16,4 @@ tomli
 typing-extensions
 whitenoise
 wrapt
+markdown
