@@ -26,7 +26,7 @@
         <hr>
         <p>{{ post.text | markdown | safe }}</p>
         <hr>
-        <p>{{ post.likes_amount }} لایک، {{ post.comments_amount }} کامنت</p>
+        <p>{{ post.likes_amount }} <img src="/static/icons/like-outline.svg" width=16/></p><p> {{ post.comments_amount }} کامنت</p>
         <hr>
         {% if comments %}
             <h3>کامنت ها</h3>

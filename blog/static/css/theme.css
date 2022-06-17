@@ -28,6 +28,9 @@
 nav {
   direction: rtl;
 }
+#navbar{
+  border-radius: 0 0 25px 25px;
+}
 /*!
    * Bootstrap v3.4.0 (https://getbootstrap.com/)
    * Copyright 2011-2018 Twitter, Inc.
@@ -39,6 +42,7 @@ header {
   background-color: #fff;
   padding-right: 0px !important;
   padding-top: 0px !important;
+  border-radius: 0 0 15px 15px;
 }
 #header {
   size: 967px 72px;
@@ -165,11 +169,12 @@ hr {
   border-bottom: 0;
   background-color: #fff;
   border: 0.5px solid rgb(136, 130, 130);
-  margin-top: 60;
+  margin-top: 40;
   display: block;
   box-sizing: inherit;
   border-radius: 15px;
-  box-shadow: -3px 4px 5px
+  box-shadow: -7px 9px 20px 1px #434e9b;
+  margin-bottom: 15px;
 }
 .comments{
   display: flex;

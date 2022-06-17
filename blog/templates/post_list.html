@@ -17,7 +17,8 @@
         </time>
         <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
         <p>{{ post.meta_description | linebreaksbr }}</p>
-        <p> {{ post.likes_amount }} لایک،{{ post.comments_amount }} کامنت </p>
+        <p
+        > {{ post.likes_amount }} <img src="/static/icons/like-outline.svg" width=16/></p><p>{{ post.comments_amount }} کامنت </p>
     </div>
 {% endfor %}
     
