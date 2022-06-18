@@ -201,3 +201,36 @@ hr {
 .comments-text{
   color: #0781c7;
 }
+#like{
+  display:flex;
+}
+#add-like, #remove-like, #like-logo{
+  cursor: pointer;
+}
+#like-and-comments-amount{
+  display: flex;
+  align-content: space-between;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  padding-right: 15px;
+  padding-left: 15px;
+  width: auto;
+}
+#comment-text{
+  width: 100%;
+  padding: 15px;
+  border-radius: 15px;
+}
+#comment-send{
+  background-color: #0781c7;
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 7px;
+  width: 100%;
+  text-align: center;
+}

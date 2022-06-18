@@ -1,3 +1,4 @@
+from django.utils import timezone
 from blog.models import Post, Like, Comment
 from django.http import HttpResponse
 import json
@@ -34,8 +35,14 @@ def add_comment(request):
             comment = form.save(commit=False)
             comment.post = post
             comment.user = request.user
+            comment.created_date = timezone.now()
             comment.save()
             status['status'] = "OK"
+            status["comment"] = {
+                "username": comment.user.username,
+                "comment": comment.text,
+                "created_date": comment.created_date.strftime("%b %d, %Y, %I:%M %p")
+            }
             return HttpResponse(json.dumps(status), content_type="application/json")
         else:
             status['status'] = "Error"

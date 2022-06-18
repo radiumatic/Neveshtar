@@ -5,6 +5,50 @@ function ready(fn) {
         document.addEventListener('DOMContentLoaded', fn);
     }
 }
+//equal to jquery method of sending a form 
+function sendForm(form) {
+    var xhr = new XMLHttpRequest();
+    xhr.open(form.method, form.action, true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            form = document.getElementById("comment-form");
+            form.reset();
+            json_result = JSON.parse(xhr.responseText);
+            var comments = document.getElementsByClassName("comments")[0];
+            var comment = document.createElement("div");
+            comment.className = "comment";
+            comments.appendChild(comment);
+            var username = document.createElement("p");
+            username.className = "comments-text";
+            username.innerText = json_result.comment.username;
+            comment.appendChild(username);
+            var comment_text = document.createElement("p");
+            comment_text.className = "comments-text";
+            comment_text.innerText = json_result.comment.comment;
+            comment.appendChild(comment_text);
+            var comment_date = document.createElement("p");
+            comment_date.className = "comments-text date";
+            comment_date.innerText = json_result.comment.created_date;
+            comment.appendChild(comment_date);
+
+        }
+    };
+    xhr.onerror = function () {
+        //convert reponse to json
+        var json = JSON.parse(xhr.responseText);
+        //display error message
+        alert(json.message);
+    }
+    var data = '';
+    for (var i = 0; i < form.elements.length; i++) {
+        var field = form.elements[i];
+        if (field.name) {
+            data += field.name + '=' + field.value + '&';   
+        }
+    }
+    xhr.send(data);
+}
 var add_func = function() {
     request = new XMLHttpRequest();
     request.open("GET", "/api/add_like/" + post_id, true);
@@ -26,7 +70,7 @@ var add_func = function() {
         else{
             console.log(request.responseText)
             json_reponse = JSON.parse(request.responseText);
-            alert("ارور باوکم:\n" + json_reponse.message);
+            alert(json_reponse.message);
         }
     }
     request.onreadystatechange = done_function;
@@ -59,15 +103,13 @@ var remove_func = function() {
         else{
             console.log(request.responseText)
             json_reponse = JSON.parse(request.responseText);
-            alert("ارور باوکم:\n" + json_reponse.message);
+            alert(json_reponse.message);
         }
     }
     request.onreadystatechange = done_function;
     request.send();
     
 }
-
-
 ready(function() {
     like_icon=document.getElementById("add-like")
     if (like_icon === null) {
@@ -76,5 +118,23 @@ ready(function() {
     }else{
         like_icon = document.getElementById("add-like")
         like_icon.addEventListener("click", add_func);
+    }
+    comment_send = document.getElementById("comment-send");
+    if (comment_send !== null) {
+        comment_send.addEventListener("click", function() {
+            form = document.getElementById("comment-form");
+            sendForm(form);
+            //reset form inputs entered data after sending and creating a new comment div(result is not comment html)
+            
+
+
+
+
+            
+
+
+
         }
+        );
+    }
 });

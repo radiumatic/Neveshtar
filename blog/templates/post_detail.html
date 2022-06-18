@@ -29,19 +29,35 @@
         <hr>
         <p>{{ post.text | markdown | safe }}</p>
         <hr>
-        <p><p id="like-count">{{ post.likes_amount }}</p>
-            {% if user.is_authenticated %}
-                {% if not user in post.liked_users %}
-                    <img src="/static/icons/like-outline.svg" width=16 class="btn-default" id="add-like"/>
+        <div id="like-and-comments-amount">
+            <div id="like"><p id="like-count">{{ post.likes_amount }}</p>
+                {% if user.is_authenticated %}
+                    {% if not user in post.liked_users %}
+                        <img src="/static/icons/like-outline.svg" width=16 class="btn-default" id="add-like"/>
+                    {% else %}
+                        <img src="/static/icons/like-fill.svg" width=16 class="btn-default" id="remove-like"/>
+                    {% endif %}
                 {% else %}
-                    <img src="/static/icons/like-fill.svg" width=16 class="btn-default" id="remove-like"/>
+                    <img src="/static/icons/like-outline.svg" width=16 class="btn btn-default" id="like-logo"/>
                 {% endif %}
-            {% else %}
-                <img src="/static/icons/like-outline.svg" width=16 class="btn btn-default"/>
-            {% endif %}
-        </p>
-        <p> {{ post.comments_amount }} کامنت</p>
+            </div>
+            <p> {{ post.comments_amount }} کامنت</p>
+        </div>
+        {% if not user.is_authenticated %}
+            <p> لطفا برای نظر دادن یا لایک کردن پست <a href="/accounts/login">وارد سایت شوید</a></p>
         <hr>
+        {% else %}
+        <div>
+            <form action="{% url 'add_comment' %}" method="post" id="comment-form">
+                <!-- csrf token -->
+                <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+                <input type="hidden" name="post_id" value="{{ post.pk }}">
+                <textarea name="text" id="comment-text" cols="30" rows="10" placeholder="نظر خود را بنویسید"></textarea>
+            </form>
+            <input type="button" value="ثبت" class="btn-default" id="comment-send">
+        </div>
+        <hr/>
+        {% endif %}
         {% if comments %}
             <h3>کامنت ها</h3>
             <div class="comments">
