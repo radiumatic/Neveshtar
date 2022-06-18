@@ -23,6 +23,10 @@ class Post(models.Model):
     @property
     def comments_amount(self):
         return self.comment_set.all().count()
+    @property
+    def liked_users(self):
+        likes = self.like_set.all()
+        return [like.user for like in likes]
         
 
     def __str__(self):

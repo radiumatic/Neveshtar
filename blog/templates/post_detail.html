@@ -3,15 +3,18 @@
 {% load markdown_extras %}
 {% load writer_auth %}
 {% block content %}
-
-        
-
+{% load js %}
+<script>
+  var post_id = "{{ post.pk|js }}";
+  console.log(post_id);
+</script>
+<script src="{% static 'js/post_detail.js' %}"></script>
 <div class="post_list">
     <article id="Post">
         {% if user|has_group:"Writers" %}
             <aside class="actions">
                 <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}">
-                   <img src="{% static 'icons/pencil-free-icon-font.svg' %}" alt="Edit" id="edit_icon"/>
+                   <img src="{% static 'icons/pencil.svg' %}" alt="Edit" id="edit_icon"/>
                 </a>
             </aside>
         {% endif %}
@@ -26,7 +29,18 @@
         <hr>
         <p>{{ post.text | markdown | safe }}</p>
         <hr>
-        <p>{{ post.likes_amount }} <img src="/static/icons/like-outline.svg" width=16/></p><p> {{ post.comments_amount }} کامنت</p>
+        <p><p id="like-count">{{ post.likes_amount }}</p>
+            {% if user.is_authenticated %}
+                {% if not user in post.liked_users %}
+                    <img src="/static/icons/like-outline.svg" width=16 class="btn-default" id="add-like"/>
+                {% else %}
+                    <img src="/static/icons/like-fill.svg" width=16 class="btn-default" id="remove-like"/>
+                {% endif %}
+            {% else %}
+                <img src="/static/icons/like-outline.svg" width=16 class="btn btn-default"/>
+            {% endif %}
+        </p>
+        <p> {{ post.comments_amount }} کامنت</p>
         <hr>
         {% if comments %}
             <h3>کامنت ها</h3>

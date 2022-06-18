@@ -21,15 +21,17 @@
   direction: rtl;
 }
 .p {
-  padding-bottom: 50px;
-  padding-left: 50px;
-  padding: 3.34em 1em
+  padding: 2em 1em;
+  margin-top : 20px;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  border: 0.5px solid;
 }
 nav {
   direction: rtl;
 }
 #navbar{
-  border-radius: 0 0 25px 25px;
+    border-radius : 0 0 15px 15px;
 }
 /*!
    * Bootstrap v3.4.0 (https://getbootstrap.com/)
@@ -43,6 +45,8 @@ header {
   padding-right: 0px !important;
   padding-top: 0px !important;
   border-radius: 0 0 15px 15px;
+  border: 0.2px solid #d9c1c1;
+  box-shadow: -9px 3px 14px 0px #434e9bc7;
 }
 #header {
   size: 967px 72px;
