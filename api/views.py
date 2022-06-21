@@ -1,5 +1,5 @@
 from django.utils import timezone
-from blog.models import Post, Like, Comment
+from blog.models import Post, Like
 from django.http import HttpResponse
 import json
 from django.views.decorators.csrf import csrf_exempt

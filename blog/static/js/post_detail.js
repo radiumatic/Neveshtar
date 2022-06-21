@@ -18,7 +18,7 @@ function sendForm(form) {
             var comments = document.getElementsByClassName("comments")[0];
             var comment = document.createElement("div");
             comment.className = "comment";
-            comments.appendChild(comment);
+            comments.insertBefore(comment, comments.firstChild);
             var username = document.createElement("p");
             username.className = "comments-text";
             username.innerText = json_result.comment.username;

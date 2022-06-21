@@ -6,11 +6,12 @@ class Post(models.Model):
     author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     title = models.CharField(max_length=300)
     text = models.TextField()
+    link = models.CharField(max_length=300, default='', unique = True)
     created_date = models.DateTimeField(
             default=timezone.now)
     published_date = models.DateTimeField(
             blank=True, null=True)
-    meta_description = models.CharField(default="salam :)", max_length=150)
+    meta_description = models.CharField(default="توضیحات پست", max_length=150)
     
 
 

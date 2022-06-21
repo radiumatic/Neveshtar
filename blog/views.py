@@ -5,13 +5,15 @@ from django.utils import timezone
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 # Create your views here.
-def post_list(request):
-    posts=Post.objects.all().order_by('published_date')
-    return render(request, 'post_list.html', {'posts':posts})
-def post_detail(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    comments = post.comment_set.all()
-    return render(request, 'post_detail.html', {'post':post, 'comments':comments})
+def post_list(request, page=1):
+    posts=Post.objects.all().order_by('-published_date')
+    posts = posts[(page-1)*10:page*10]
+    pages_amount=len(Post.objects.all())//10
+    return render(request, 'blog/post_list.html', {'posts':posts, 'pages_amount':range(1, pages_amount+2), 'page':page})
+def post_detail(request, url):
+    post=get_object_or_404(Post, link=url)
+    comments = post.comment_set.all().order_by('-created_date')
+    return render(request, 'blog/post_detail.html', {'post':post, 'comments':comments})
 @login_required
 def post_new(request):
     if request.method == "POST":
@@ -21,10 +23,10 @@ def post_new(request):
             post.author = request.user
             post.published_date = timezone.now()
             post.save()
-            return redirect('post_detail', pk=post.pk)
+            return redirect('blog/post_detail', url=post.link)
     else:
         form = PostForm()
-    return render(request, 'post_edit.html', {'form': form})
+    return render(request, 'blog/post_edit.html', {'form': form})
 @login_required
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -38,6 +40,6 @@ def post_edit(request, pk):
             return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm(instance=post)
-    return render(request, 'post_edit.html', {'form': form})
+    return render(request, 'blog/post_edit.html', {'form': form})
 
         
