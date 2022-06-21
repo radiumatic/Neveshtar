@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% block title %}سایت شخصی - بلاگ{% endblock %}
 {% block content %}
 <div class="post_list">
     
@@ -15,7 +15,7 @@
         <time class="date">
             {{ post.published_date }}
         </time>
-        <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+        <h2><a href="{% url 'post_detail' url=post.link %}">{{ post.title }}</a></h2>
         <p>{{ post.meta_description | linebreaksbr }}</p>
         <p> {{ post.likes_amount }} 
             {% if not user in post.liked_users %}
@@ -27,6 +27,17 @@
         <p>{{ post.comments_amount }} کامنت </p>
     </div>
 {% endfor %}
-    
-{% endblock %}
 </div>
+<hr>
+<!-- first check if pages or one or more, if theyre more than one,then the first page number should be plain text and others link -->
+<div id="pages-links"> 
+    {% for p in pages_amount %}
+        {% if p == page %}
+            <p class="page-link" id="fill-page-button"> {{p}} </p>
+        {% else %}
+            <a class="page-link" href="{% url 'post_list_page' page=p %}">{{ p }}</a>
+        {% endif %}
+    {% endfor %}
+</p>
+{% endblock %}
+

@@ -234,3 +234,20 @@ hr {
   width: 100%;
   text-align: center;
 }
+#pages-links{
+  margin-right : 15px;
+  display: flex;
+}
+.page-link {
+  margin-left : 15px;
+  border-radius: 7px;
+  padding : 15px;
+  border: none;
+  height: fit-content
+}
+#fill-page-button{
+  background-color: #0781c7;
+  color: #fff;
+  border-radius: 7px;
+  text-align: center;
+}
