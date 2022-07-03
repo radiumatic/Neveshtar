@@ -1,0 +1,51 @@
+{% extends 'blog/base.html' %}
+{% block title %}سایت شخصی - بلاگ{% endblock %}
+{% block content %}
+{% if not posts %}
+    برای جستجوی شما نتیجه ای وجود ندارد
+{% else %}
+    <div class="row row-cols-1 row-cols-md-3">
+        <h1>نتایج جستجو</h1>
+        {% for post in posts %}
+            <div class="col">
+                <div class="card border-primary rounded-4 w-75 post-card">
+                    <div class="card-header text-center rounded-4 rounded-bottom">
+                        <time class="date card-subtitle">
+                            {{ post.published_date | date:'d M Y' }}
+                        </time>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title mb-2"><a href="{% url 'post_detail' url=post.link %}">{{ post.title }}</a></h4>
+                        <h6 class="card-subtitle mb-3 text-muted">{{ post.author.get_full_name }}</h6>
+                        <p class="card-text">{{ post.meta_description | linebreaksbr }}</p>
+                    </div>
+                    <div class="card-footer d-flex justify-content-sm-between">
+                        <p> {{ post.likes_amount }} 
+                            {% if not user in post.liked_users %}
+                                <img src="/static/icons/like-outline.svg" width=16 alt="لوگوی لایک نشده"/>
+                            {% else %}
+                                <img src="/static/icons/like-fill.svg" width=16 alt="لوگوی لایک شده"/>
+                            {% endif %}
+                        </p>
+                        <p>{{ post.comments_amount }} کامنت </p>
+                    </div>
+                </div>
+            </div>
+    {% endfor %}
+    </div>
+{% endif %}
+{% if page %}
+<hr>
+<!-- first check if pages or one or more, if theyre more than one,then the first page number should be plain text and others link -->
+<div id="pages-links"> 
+    {% for p in pages_amount %}
+        {% if p == page %}
+            <p class="page-link" id="fill-page-button"> {{p}} </p>
+        {% else %}
+            <a class="page-link" href="{% url 'post_list_page'%}?page={{ p }}">{{ p }}</a>
+        {% endif %}
+    {% endfor %}
+</p>
+{% endif %}
+{% endblock %}
+

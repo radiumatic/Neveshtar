@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+{% block title %}ورود{% endblock %}
+{% block content %}
+{% if error %}
+    {{ error }}
+{% endif %}
+<div id = "login-div">
+    <form action = "{% url 'login' %}" method="post" id="register-form">
+        {% csrf_token %}
+        <input type="email" name="username" placeholder="ایمیل">
+        <input type="password" name="password" placeholder = "رمز‌عبور">
+        <button class="btn border" type="submit">ورود</button>
+    </form>
+</div>
+{% endblock %}

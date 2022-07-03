@@ -1,0 +1,6 @@
+{% autoescape off %}
+سلام {{ fullname }} عزیز
+لطفا برای تایید ایمیل خود رو این لینک کلیک کنید
+https://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+تشکر
+{% endautoescape %}

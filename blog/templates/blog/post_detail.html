@@ -1,4 +1,4 @@
-{% extends 'base.html'  %}
+{% extends 'blog/base.html'  %}
 {% block title %}بلاگ - {{ post.title }}{% endblock %}
 {% load static %}
 {% load markdown_extras %}
@@ -34,12 +34,12 @@
             <div id="like"><p id="like-count">{{ post.likes_amount }}</p>
                 {% if user.is_authenticated %}
                     {% if not user in post.liked_users %}
-                        <img src="/static/icons/like-outline.svg" width=16 class="btn-default" id="add-like"/>
+                        <img src="/static/icons/like-outline.svg" width=16 class="btn-default" id="add-like" alt="اضافه کردن لایک"/>
                     {% else %}
-                        <img src="/static/icons/like-fill.svg" width=16 class="btn-default" id="remove-like"/>
+                        <img src="/static/icons/like-fill.svg" width=16 class="btn-default" id="remove-like" alt="حذف لایک"/>
                     {% endif %}
                 {% else %}
-                    <img src="/static/icons/like-outline.svg" width=16 class="btn btn-default" id="like-logo"/>
+                    <img src="/static/icons/like-outline.svg" width=16 class="btn-default" id="like-logo" alt="لوگوی لایک"/>
                 {% endif %}
             </div>
             <p> {{ post.comments_amount }} کامنت</p>
@@ -59,19 +59,19 @@
         </div>
         <hr/>
         {% endif %}
-        {% if comments %}
-            <h3>کامنت ها</h3>
-            <div class="comments">
-            {% for comment in comments %}
-                <div class="comment">
-                    <p class="comments-text"> {{ comment.user.username }} </p>
-                    <p class="comments-text">{{ comment.text }}</p>
-                    <time class="date comments-text">
-                        {{ comment.created_date }}
-                    </time>
-                </div>
-            {% endfor %}
-            </div>
+        <div class="comments">
+            {% if comments %}
+                <h3>کامنت ها</h3>
+                {% for comment in comments %}
+                    <div class="comment">
+                        <p class="comments-text"> {{ comment.user.username }} </p>
+                        <p class="comments-text">{{ comment.text }}</p>
+                        <time class="date comments-text">
+                            {{ comment.created_date }}
+                        </time>
+                    </div>
+                {% endfor %}
+        </div>    
         {% endif %}
     </article>
 

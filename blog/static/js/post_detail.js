@@ -18,7 +18,12 @@ function sendForm(form) {
             var comments = document.getElementsByClassName("comments")[0];
             var comment = document.createElement("div");
             comment.className = "comment";
-            comments.insertBefore(comment, comments.firstChild);
+            try{
+                comments.insertBefore(comment, comments.firstChild);
+            }
+            catch{
+                comments.appendChild(comment)
+            }
             var username = document.createElement("p");
             username.className = "comments-text";
             username.innerText = json_result.comment.username;
@@ -53,6 +58,11 @@ var add_func = function() {
     request = new XMLHttpRequest();
     request.open("GET", "/api/add_like/" + post_id, true);
     request.withCredentials = true;
+    request.onerror = function() {
+        console.log(request.responseText)
+        json_reponse = JSON.parse(request.responseText);
+        alert(json_reponse.message);
+    }
     var done_function = function() {
         if (request.readyState == 4 && request.status == 200) {
             like_count = document.getElementById("like-count");
@@ -63,14 +73,8 @@ var add_func = function() {
             like_icon.removeEventListener("click", add_func);
             like_icon.addEventListener("click", remove_func);
         }
-    }
-    request.onerror = function() {
-        if(request.status == 456){
-        }
-        else{
-            console.log(request.responseText)
-            json_reponse = JSON.parse(request.responseText);
-            alert(json_reponse.message);
+        else if (request.readyState == 4 && request.status == 400) {
+            alert("shit")
         }
     }
     request.onreadystatechange = done_function;
@@ -82,6 +86,12 @@ var remove_func = function() {
     request = new XMLHttpRequest();
     request.open("GET", "/api/remove_like/" + post_id, true);
     request.withCredentials = true;
+    //on error
+    request.on = function() {
+        console.log(request.responseText)
+        json_reponse = JSON.parse(request.responseText);
+        alert(json_reponse.message);
+    }
     var done_function = function() {
         if (request.readyState == 4 && request.status == 200) {
             console.log(request.responseText);
@@ -94,16 +104,8 @@ var remove_func = function() {
             like_icon.addEventListener("click", add_func);
 
         }
-    }
-    //on error
-    request.onerror = function() {
-        if (request.status = 456){    
-            console.log(request.responseText) 
-        }
-        else{
-            console.log(request.responseText)
-            json_reponse = JSON.parse(request.responseText);
-            alert(json_reponse.message);
+        else if (request.status == 400) {
+            alert("shit")   
         }
     }
     request.onreadystatechange = done_function;

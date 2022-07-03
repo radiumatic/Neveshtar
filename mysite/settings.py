@@ -131,7 +131,7 @@ EMAIL_HOST = 'smtp.elasticemail.com'
 EMAIL_PORT = 2525
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'no-reply@radiumatic.ir'
-EMAIL_HOST_PASSWORD = '965E9BE377214F9B71BC9FAAC730C37B8603'
+EMAIL_HOST_PASSWORD = os.getenv('SMTP_PASSWORD')
 AUTH_USER_MODEL = 'accounts.User'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 import django_on_heroku

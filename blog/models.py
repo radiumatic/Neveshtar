@@ -1,9 +1,13 @@
 from django.db import models
 from django.utils import timezone
-# Create your models here.
+from django.contrib.auth import get_user_model
+
+from accounts.forms import User
+
+USER = get_user_model()
 
 class Post(models.Model):
-    author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=300)
     text = models.TextField()
     link = models.CharField(max_length=300, default='', unique = True)
@@ -34,7 +38,7 @@ class Post(models.Model):
         return self.title
 class Comment(models.Model):
     post = models.ForeignKey(Post,on_delete=models.CASCADE)
-    user = models.ForeignKey('auth.User',on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
 
@@ -44,6 +48,6 @@ class Comment(models.Model):
  
 class Like(models.Model):
     post = models.ForeignKey(Post,on_delete=models.CASCADE)
-    user = models.ForeignKey('auth.User',on_delete=models.CASCADE)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
 
 

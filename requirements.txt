@@ -5,7 +5,6 @@ dill
 dj-database-url
 Django
 django-on-heroku
-isort==5.10.1
 lazy-object-proxy
 mccabe
 platformdirs
@@ -17,3 +16,4 @@ typing-extensions
 whitenoise
 wrapt
 markdown
+six
