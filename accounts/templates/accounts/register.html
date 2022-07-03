@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %}
+{% block title %}ثبت‌نام{% endblock %}
+{% block content %}
+{% if error %}
+{{ error }}
+{% endif %}
+<div id = "register-div">
+    <form action = "{% url 'register' %}" method = "post" id="register-form">
+        <!-- csrf_token -->
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="نام کاربری">
+        <input type="text" name="first_name" placeholder = "نام">
+        <input type="text" name="last_name" placeholder = "نام خانوادگی">
+        <input type="email" name="email" placeholder="ایمیل">
+        <input type="password" name="password1" placeholder = "رمز‌عبور">
+        <input type="password" name="password2" placeholder = "تایید رمز‌عبور">
+        <button class="btn border" type="submit">ثبت‌نام</button>
+    </form>
+</div>
+{% endblock %}
