@@ -146,6 +146,10 @@ These will be fixed.
 ## Why this name?
 Neveshtar means writing in Persian.
 
+## License
+AGPL 3.0 
+You can find full text in LICENSE file
+
 
 
 
