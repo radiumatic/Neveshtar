@@ -27,6 +27,9 @@
   border-radius: 15px;
   border: 0.5px solid;
 }
+p {
+  font-size: 17px;
+}
 nav {
   direction: rtl;
 }
@@ -122,7 +125,7 @@ body {
   direction: rtl;
 }
 p,time{
-  color:#808285;
+  color:#6c6d6e;
 }
 .post_list {
   display: flex;
@@ -252,4 +255,18 @@ hr {
 .post-card{
   margin-bottom: 15px;
   margin-right: 35;
+}
+#id_text{
+  width:100%;
+  height: auto;
+}
+div.post-content>p>img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 50%;
+  height:auto;
+  border-radius: 7px;
+  box-shadow: 6px 5px 7px -2px #6e83cb;
+  margin-bottom: 20px;
 }

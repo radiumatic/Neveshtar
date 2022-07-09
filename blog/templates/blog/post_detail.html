@@ -28,7 +28,7 @@
         {% endif %}
         <h2 class="post_title ppp">{{ post.title }}</h2>
         <hr>
-        <p>{{ post.text | markdown | safe }}</p>
+        <div class="post-content">{{ post.text | markdown | safe }}</p>
         <hr>
         <div id="like-and-comments-amount">
             <div id="like"><p id="like-count">{{ post.likes_amount }}</p>

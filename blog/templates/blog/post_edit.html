@@ -1,6 +1,8 @@
 {% extends 'blog/base.html' %}
 {% block title %}بلاگ - پست جدید یا ویرایش پست{% endblock %}
 {% block content %}
+{% load static %}
+<script src="{% static 'js/post_edit.js' %}"></script>
     <h2>پست جدید</h2>
     <hr>
     <form method="POST" class="post-form">{% csrf_token %}
