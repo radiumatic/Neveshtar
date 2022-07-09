@@ -1,4 +1,4 @@
-"""mysite URL Configuration
+"""Neveshtar URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
@@ -18,6 +18,6 @@ from django.urls import path,include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
-    path('blog/',include('blog.urls')),
+    path('',include('blog.urls')),
     path('api/',include('api.urls')),
     ]
