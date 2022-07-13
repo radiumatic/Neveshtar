@@ -95,13 +95,24 @@ The steps are pretty simple:
 7. Create a SuperUser to moderate the blog with this command:
 
    ```bash
-   heroku run python manage.py createsuperuser
+   heroku run "python manage.py createsuperuser"
    ```
    It will ask you in order for Email, Username, Name, Last name, and password
 8. Run this command to create Writers permissions:
    ```bash
-   python3 manage.py setupwriters
+   heroku run "python manage.py setupwriters"
    ```
+9. You need to add yourself to writers with this command:
+   ```bash
+   heroku run "python manage.py addwriter 'example@example.com'"
+   ```
+   
+   Change example@example.com to the email you entered in creating super user. You can give more than one email and make multiple users writer at the same time
+
+   You should do this everytime you want to add a new writer. First, Tell that person to create an account using register form, and then run this command(same syntex as the `addwriter` command) to make him/her staff, then run the `addwriter` again with his/her email:
+      ```bash
+      heroku run "python manage.py addstaff 'example@example.com'"
+      ```
 Done. Enjoy!
 ### PC/VPS
 The steps are even simpler:
@@ -151,11 +162,33 @@ The steps are even simpler:
       ```
       It will ask you in order for Email, Username, Name, Last name, and password
 
-8. Run server with this command:
+4. Enable virtual environment for two next commands:
+   Windows:
+   ```cmd
+   .venv\Scripts\activate
+   ```
+   Linux:
+   ```bash
+   source .venv/bin/activate
+   ```
+
+5. You need to add yourself to writers with this command:
+   ```bash
+   python3 manage.py addwriter 'example@example.com'
+   ```
+   
+   Change example@example.com to the email you entered in creating super user. You can give more than one email and make multiple users writer at the same time
+
+   You should do this everytime you want to add a new writer. First, Tell that person to create an account using register form, and then run this command(same syntex as the `addwriter` command) to make him/her staff, then run the `addwriter` again with his/her email:
+      ```bash
+      python3 manage.py addstaff 'example@example.com'
+      ```
+
+6. Run server with this command:
    ```bash
    python3 manage.py runserver
    ```
-9. **FOR VPS**, Add these lines to the file Neveshtar/sttings.py (make sure you add them before the statement `import django_on_heroku`, preferably after `STATIC_ROOT = os.path.join(BASE_DIR, 'static')`):
+7. **FOR VPS**, Add these lines to the file Neveshtar/sttings.py (make sure you add them before the statement `import django_on_heroku`, preferably after `STATIC_ROOT = os.path.join(BASE_DIR, 'static')`):
 
    ```python
    CSRF_TRUSTED_ORIGINS = [
@@ -164,7 +197,7 @@ The steps are even simpler:
    ```
    Change https://your-address.com to the IP/Address of your VPS
 
-10. **FOR VPS**, You should configure a web server too. You can follow [this tutorial](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-local-django-app-to-a-vps), but please change the details to make sure it's compatible with this project.
+8. **FOR VPS**, You should configure a web server too. You can follow [this tutorial](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-local-django-app-to-a-vps), but please change the details to make sure it's compatible with this project.
 
 ## Known issues
 * If you enter invalid (not incorrect, invalid) information in registering, resetting password and login forms, it just returns you to the form without any error
