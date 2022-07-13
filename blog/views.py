@@ -22,6 +22,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from django.db.models import Q 
+from django.http import HttpResponseRedirect
 # Create your views here.
 def post_list(request, page=1):
     posts=Post.objects.all().order_by('-published_date')
@@ -34,6 +35,8 @@ def post_detail(request, url):
     return render(request, 'blog/post_detail.html', {'post':post, 'comments':comments})
 @login_required
 def post_new(request):
+    if not request.user.groups.filter(name="Writers").exists():
+        return HttpResponseRedirect('/accounts/login')
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
@@ -47,6 +50,8 @@ def post_new(request):
     return render(request, 'blog/post_edit.html', {'form': form})
 @login_required
 def post_edit(request, pk):
+    if not request.user.groups.filter(name="Writers").exists():
+        return HttpResponseRedirect('/accounts/login')
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
         form = PostForm(request.POST, instance=post)
@@ -66,7 +71,6 @@ def search(request):
         page = request.GET["page"]
     except:
         pass
-    print(q)
     if q != None:
         posts = Post.objects.filter(Q(title__icontains=q) | Q(text__icontains=q) | Q(meta_description__icontains=q))
         if not posts:
