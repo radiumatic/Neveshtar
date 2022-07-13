@@ -80,7 +80,7 @@ def login(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login_user(request, user)
-            return HttpResponseRedirect('/blog/')
+            return HttpResponseRedirect('//')
         else:
             return render(request, 'accounts/login.html', {'error': 'نام کاربری یا رمز عبور اشتباه است'})
     else:
