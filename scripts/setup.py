@@ -32,8 +32,8 @@ except Exception as err:
     print(Fore.RED + f"There was an error : {str(err)}")
     exit()
 
-print(f"""{Back.GREEN}Adding environment variables...
-{Back.RESET}Please see the readme to understand what you should enter""")
+print(f"""{Back.GREEN}Adding environment variables...{Back.RESET}
+Please see the readme to understand what you should enter""")
 
 Variables_list = ["SMTP_HOST", "SMTP_PORT", 'USE_TLS_SMTP', 'SMTP_USERNAME', 'SMTP_PASSWORD', 'EMAIL_HOST_USER', 'SECRET_KEY']
 
