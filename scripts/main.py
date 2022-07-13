@@ -25,6 +25,7 @@ def string_to_boolean(str:str):
 def load_envs(parent_dir:str):
     if exists(join(parent_dir, '.env')):
         load_dotenv()
+    Debug = True
 
 
         
