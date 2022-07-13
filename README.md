@@ -92,6 +92,13 @@ The steps are pretty simple:
    ```bash
    git push heroku HEAD:main
    ```
+7. Create a SuperUser to moderate the blog with this command:
+
+   ```bash
+   heroku run python manage.py createsuperuser
+   ```
+   It will ask you in order for Email, Username, Name, Last name, and password
+8. Create a user group with these permissions in heroku admin(a tutorial can be found here) 
 Done. Enjoy!
 ### PC/VPS
 The steps are even simpler:

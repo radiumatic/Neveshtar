@@ -26,4 +26,5 @@ def load_envs(parent_dir:str):
     if exists(join(parent_dir, '.env')):
         load_dotenv()
 
+
         
