@@ -12,7 +12,7 @@ class Command(BaseCommand):
     help = 'Adds the users you want to staff (provide emails)'
 
     def add_arguments(self, parser):
-        parser.add_argument('users', nargs='+', type=int)
+        parser.add_argument('', nargs='+', type=str)
 
     def handle(self, *args, **options):
         for email in options['users']:
