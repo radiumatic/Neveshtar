@@ -163,6 +163,7 @@ The steps are even simpler:
       It will ask you in order for Email, Username, Name, Last name, and password
 
 4. Enable virtual environment for two next commands:
+
    Windows:
    ```cmd
    .venv\Scripts\activate
