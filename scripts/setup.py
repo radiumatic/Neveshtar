@@ -6,7 +6,7 @@ try:
     print("Done")
 except Exception as err:
     print(f"There was an error : {str(err)}")
-    exit
+    exit()
     
 python_binaries_path = r'.venv\Scripts' if os.name == "nt" else r'.venv/bin'
 file_extension = ".exe" if os.name == "nt" else ""
@@ -21,6 +21,7 @@ except:
         from colorama import Fore, init
     except Exception as err:
         print(f"There was an error : {str(err)}")
+        exit()
 init(autoreset=True)
 
 print(Back.GREEN + "Installing required packages...")
@@ -29,6 +30,7 @@ try:
     print(Fore.GREEN + "Done")
 except Exception as err:
     print(Fore.RED + f"There was an error : {str(err)}")
+    exit()
 
 print(f"""{Back.GREEN}Adding environment variables...
 {Back.RESET}Please see the readme to understand what you should enter""")
@@ -44,6 +46,7 @@ try:
     print(Fore.GREEN + "Done")
 except Exception as err:
     print(Fore.RED + f"There was an error : {str(err)}")
+    exit()
 
 print(Back.GREEN + 'Preparing DB...')
 
@@ -57,6 +60,7 @@ try:
     print(Fore.GREEN + "Done")
 except Exception as err:
     print(Fore.RED + f"There was an error : {str(err)}")
+    exit()
 
 print(Fore.GREEN + "Done! " + Fore.RESET + "Get back to readme.")
 
