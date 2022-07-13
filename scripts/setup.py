@@ -41,7 +41,7 @@ try:
     print("Please enter the value for each of this variables:")    
     with open('.env', 'w', encoding='utf-8') as f:
         for var in Variables_list:
-            value = input (f'{var} :')
+            value = input (f'{var} : ')
             f.write(f'{var} = "{value}"')
     print(Fore.GREEN + "Done")
 except Exception as err:
