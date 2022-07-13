@@ -98,50 +98,74 @@ The steps are pretty simple:
    heroku run python manage.py createsuperuser
    ```
    It will ask you in order for Email, Username, Name, Last name, and password
-8. Create a user group with these permissions in heroku admin(a tutorial can be found here) 
+8. Run this command to create Writers permissions:
+   ```bash
+   python3 manage.py setupwriters
+   ```
 Done. Enjoy!
 ### PC/VPS
 The steps are even simpler:
 1. Install Python if you don't have it already
-2. Clone this repository (`git clone https://github.com/nimagp/Neveshtar)
-3. Create a Virtual Environment and enable it using these commands:
-   ```bash
-   #Windows
-   python -m venv .venv
-   .venv\Scripts\activate
-   #Linux and Mac
-   python3 -m venv .venv
-   source .venv/bin/activate
-   ```
-4. Add variables using `.env` file. Please notice that you should name the file exactly the same
+2. Clone this repository (`git clone https://github.com/nimagp/Neveshtar`) and navigate to the created directory
 
-   Use this pattern and add all the variables:
-   ```
-   Variable = "Value"
-   ```
-5. Install required packages using this command:
+3. Eeither run this command to configure automatically:
    ```bash
-   pip install -r requirements.txt
+   python3 scripts/setup.py
    ```
-6. Run these commands in order to prepare database:
-   ```bash
-   python manage.py makemigrations
-   python manage.py makemigrations blog
-   python manage.py makemigrations accounts
-   python manage.py migrate
-   ```
+   or follow these steps to do it yourself:
+   1. Create a Virtual Environment and enable it using these commands:
+      ```bash
+      #Windows
+      python -m venv .venv
+      .venv\Scripts\activate
+      #Linux and Mac
+      python3 -m venv .venv
+      source .venv/bin/activate
+      ```
+   2. Add variables using `.env` file. Please notice that you should name the file exactly the same
+
+      Use this pattern and add all the variables:
+      ```
+      Variable = "Value"
+      ```
+   3. Install required packages using this command:
+      ```bash
+      pip install -r requirements.txt
+      ```
+   4. Run these commands in order to prepare database:
+      ```bash
+      python3 manage.py makemigrations
+      python3 manage.py makemigrations blog
+      python3 manage.py makemigrations accounts
+      python3 manage.py migrate
+      ```
+
+   5. Run this command to create Writers permissions:
+      ```bash
+      python3 manage.py setupwriters
+      ```
+   
 7. Create a SuperUser to moderate the blog with this command:
 
    ```bash
-   python manage.py createsuperuser
+   python3 manage.py createsuperuser
    ```
    It will ask you in order for Email, Username, Name, Last name, and password
 
 8. Run server with this command:
    ```bash
-   python manage.py runserver
+   python3 manage.py runserver
    ```
-9. **FOR VPS**, You should configure a web server too. You can follow [this tutorial](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-local-django-app-to-a-vps), but please change the details to make sure it's compatible with this project.
+9. Add these lines to the file Neveshtar/sttings.py (make sure you add them before the statement `import django_on_heroku`, preferably after `STATIC_ROOT = os.path.join(BASE_DIR, 'static')`):
+
+   ```python
+   CSRF_TRUSTED_ORIGINS = [
+    'https://your-address.com/'
+   ]
+   ```
+   Change https://your-address.com to the IP/Address of your VPS
+
+10. **FOR VPS**, You should configure a web server too. You can follow [this tutorial](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-local-django-app-to-a-vps), but please change the details to make sure it's compatible with this project.
 
 ## Known issues
 * If you enter invalid (not incorrect, invalid) information in registering, resetting password and login forms, it just returns you to the form without any error
