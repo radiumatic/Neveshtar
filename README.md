@@ -73,7 +73,7 @@ The steps are pretty simple:
 1. Clone this repository (`git clone https://github.com/radiumatic/Neveshtar)
 2. [Create a project](https://devcenter.heroku.com/articles/creating-apps)
 3. Set the variables mentioned before using [this](https://devcenter.heroku.com/articles/config-vars) way or Heroku dashboard
-4. Add these lines to the file Neveshtar/sttings.py (make sure you add them before the statement `import django_on_heroku`, preferably after `STATIC_ROOT = os.path.join(BASE_DIR, 'static')`):
+4. Add these lines to the file Neveshtar/settings.py (make sure you add them before the statement `import django_on_heroku`, preferably after `STATIC_ROOT = os.path.join(BASE_DIR, 'static')`):
 
    ```python
    CSRF_TRUSTED_ORIGINS = [
@@ -188,7 +188,7 @@ The steps are even simpler:
    ```bash
    python3 manage.py runserver
    ```
-7. **FOR VPS**, Add these lines to the file Neveshtar/sttings.py (make sure you add them before the statement `import django_on_heroku`, preferably after `STATIC_ROOT = os.path.join(BASE_DIR, 'static')`):
+7. **FOR VPS**, Add these lines to the file Neveshtar/settings.py (make sure you add them before the statement `import django_on_heroku`, preferably after `STATIC_ROOT = os.path.join(BASE_DIR, 'static')`):
 
    ```python
    CSRF_TRUSTED_ORIGINS = [
