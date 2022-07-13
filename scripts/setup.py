@@ -42,7 +42,7 @@ try:
     with open('.env', 'w', encoding='utf-8') as f:
         for var in Variables_list:
             value = input (f'{var} : ')
-            f.write(f'{var} = "{value}"')
+            f.write(f'{var} = "{value}"\n')
     print(Fore.GREEN + "Done")
 except Exception as err:
     print(Fore.RED + f"There was an error : {str(err)}")
