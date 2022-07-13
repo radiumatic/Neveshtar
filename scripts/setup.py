@@ -62,6 +62,17 @@ except Exception as err:
     print(Fore.RED + f"There was an error : {str(err)}")
     exit()
 
+print(Back.GREEN + "Creating super user(full admin)")
+
+try:
+    
+    subprocess.run([os.path.join(python_binaries_path, f"python{file_extension} manage.py createsuperuser")], check = True, shell=True)
+    print(Fore.GREEN + "Done")
+except Exception as err:
+    print(Fore.RED + f"There was an error : {str(err)}")
+    exit()
+
+
 print(Fore.GREEN + "Done! " + Fore.RESET + "Get back to readme.")
 
 
