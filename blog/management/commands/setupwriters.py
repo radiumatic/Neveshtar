@@ -20,7 +20,7 @@ class Command(BaseCommand):
             new_group, created = Group.objects.get_or_create(name=group)
             for model in MODELS:
                 for permission in MODELS[model]:
-                    name = 'Can {} {}'.format(permission, model)
+                    name = 'Can {} {}'.format(permission, model.lower())
                     print("Creating {}".format(name))
 
                     try:
