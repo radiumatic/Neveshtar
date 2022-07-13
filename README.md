@@ -144,19 +144,18 @@ The steps are even simpler:
       ```bash
       python3 manage.py setupwriters
       ```
-   
-7. Create a SuperUser to moderate the blog with this command:
+   6. Create a SuperUser to moderate the blog with this command:
 
-   ```bash
-   python3 manage.py createsuperuser
-   ```
-   It will ask you in order for Email, Username, Name, Last name, and password
+      ```bash
+      python3 manage.py createsuperuser
+      ```
+      It will ask you in order for Email, Username, Name, Last name, and password
 
 8. Run server with this command:
    ```bash
    python3 manage.py runserver
    ```
-9. Add these lines to the file Neveshtar/sttings.py (make sure you add them before the statement `import django_on_heroku`, preferably after `STATIC_ROOT = os.path.join(BASE_DIR, 'static')`):
+9. **FOR VPS**, Add these lines to the file Neveshtar/sttings.py (make sure you add them before the statement `import django_on_heroku`, preferably after `STATIC_ROOT = os.path.join(BASE_DIR, 'static')`):
 
    ```python
    CSRF_TRUSTED_ORIGINS = [
