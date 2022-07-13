@@ -13,7 +13,7 @@ class Command(BaseCommand):
     help = 'Adds the users you want to writers (provide emails)'
 
     def add_arguments(self, parser):
-        parser.add_argument('', nargs='+', type=str)
+        parser.add_argument('users', nargs='+', type=str)
 
     def handle(self, *args, **options):
         Writers = Group.objects.get(name='Writers')
