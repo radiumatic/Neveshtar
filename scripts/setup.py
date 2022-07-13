@@ -37,7 +37,7 @@ Variables_list = ["SMTP_HOST", "SMTP_PORT", 'USE_TLS_SMTP', 'SMTP_USERNAME', 'SM
 
 try:
     print("Please enter the value for each of this variables:")    
-    with open('.env', 'wb', encoding='utf-8') as f:
+    with open('.env', 'w', encoding='utf-8') as f:
         for var in Variables_list:
             value = input (f'{var} :')
             f.write(f'{var} = "{value}"')
@@ -58,7 +58,7 @@ try:
 except Exception as err:
     print(Fore.RED + f"There was an error : {str(err)}")
 
-print(Fore.GREEN + "Done!" + Fore.RESET + "Get back to readme.")
+print(Fore.GREEN + "Done! " + Fore.RESET + "Get back to readme.")
 
 
 
