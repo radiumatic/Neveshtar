@@ -211,7 +211,7 @@ These will be fixed.
 Neveshtar means writing in Persian.
 
 ## License
-MIT license 
+GPLv3
 You can find full text in LICENSE file
 
 
