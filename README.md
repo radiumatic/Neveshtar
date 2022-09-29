@@ -70,7 +70,7 @@ You can use any database Django supports (or can support with plugins) but usual
 
 ### Heroku
 The steps are pretty simple:
-1. Clone this repository (`git clone https://github.com/radiumatic/Neveshtar)
+1. Clone this repository (`git clone https://github.com/radiumatic/Neveshtar`)
 2. [Create a project](https://devcenter.heroku.com/articles/creating-apps)
 3. Set the variables mentioned before using [this](https://devcenter.heroku.com/articles/config-vars) way or Heroku dashboard
 4. Add these lines to the file Neveshtar/settings.py (make sure you add them before the statement `import django_on_heroku`, preferably after `STATIC_ROOT = os.path.join(BASE_DIR, 'static')`):
