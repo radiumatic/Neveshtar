@@ -34,7 +34,7 @@ except:
         print("Installing colorama...")
         subprocess.run([os.path.join(python_binaries_path, f"pip{file_extension} install colorama")], check = True, shell=True)
         print("Done")
-        from colorama import Fore, init, Black
+        from colorama import Fore, init, Back
     except Exception as err:
         print(f"There was an error : {str(err)}")
         exit()
