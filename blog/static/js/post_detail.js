@@ -148,7 +148,7 @@ ready(function() {
             sendForm(form);
         });
     }
-    const txHeight = 16;
+    const txHeight = 120;
     const tx = document.getElementsByTagName("textarea");
     
     for (let i = 0; i < tx.length; i++) {
