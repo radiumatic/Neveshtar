@@ -49,7 +49,7 @@
         <h2 class="post_title ppp">{{ post.title }}</h2>
         <hr>
         <div class="post-content">{{ post.text | markdown | safe }}</p>
-        <hr>
+        <hr class="sep-hr">
         <div id="like-and-comments-amount">
             <div id="like"><p id="like-count">{{ post.likes_amount }}</p>
                 {% if user.is_authenticated %}
@@ -66,27 +66,27 @@
         </div>
         {% if not user.is_authenticated %}
             <p> لطفا برای نظر دادن یا لایک کردن پست <a href="/accounts/login">وارد سایت شوید</a></p>
-        <hr>
         {% else %}
         <div>
             <form action="{% url 'add_comment' %}" method="post" id="comment-form">
                 <!-- csrf token -->
                 <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
                 <input type="hidden" name="post_id" value="{{ post.pk }}">
-                <textarea name="text" id="comment-text" cols="30" rows="10" placeholder="نظر خود را بنویسید"></textarea>
+                <textarea name="text" id="comment-textarea" placeholder="نظر خود را بنویسید"></textarea>
             </form>
             <input type="button" value="ثبت" class="btn-default" id="comment-send">
         </div>
-        <hr/>
         {% endif %}
+        <hr class="sep-hr">
         <div class="comments">
             {% if comments %}
-                <h3>کامنت ها</h3>
                 {% for comment in comments %}
                     <div class="comment">
-                        <p class="comments-text"> {{ comment.user.username }} </p>
-                        <p class="comments-text">{{ comment.text }}</p>
-                        <time class="date comments-text">
+                        <p class="comment-information comment-author"> {{ comment.user.username }} </p>
+                        <hr class="comment-first-hr">
+                        <p class="comment-text">{{ comment.text }}</p>
+                        <hr class="comment-sec-hr">
+                        <time class="date comment-information">
                             {{ comment.created_date }}
                         </time>
                     </div>
