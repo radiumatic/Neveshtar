@@ -26,7 +26,7 @@ load_envs(BASE_DIR)
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = string_to_boolean(os.getenv("DEBUG"))
+DEBUG = string_to_boolean(os.getenv("DEBUG",""))
 
 ALLOWED_HOSTS = []
 
