@@ -21,11 +21,17 @@
 {% extends 'blog/base.html' %}
 {% block title %}سایت شخصی - بلاگ{% endblock %}
 {% block content %}
+{% load static %}
 <div class="row row-cols-1 row-cols-md-3">
     {% for post in posts %}
         <div class="col">
             <div class="card border-primary rounded-4 w-75 post-card">
-                <div class="card-header text-center rounded-4 rounded-bottom">
+                {% if post.thumbnail %}
+                    <img src="{{ post.thumbnail.url }}" class="card-img-top rounded-4 rounded-bottom border-primary">
+                {% else %}
+                    <img src="{% static 'img/no-cover.jpg' %}" class="card-img-top rounded-4 rounded-bottom border-primary">
+                {% endif %}
+                <div class="card-header text-center rounded-4 rounded-top">
                     <time class="date card-subtitle">
                         {{ post.published_date | date:'d M Y' }}
                     </time>
@@ -38,9 +44,9 @@
                 <div class="card-footer d-flex justify-content-sm-between">
                     <p> {{ post.likes_amount }} 
                         {% if not user in post.liked_users %}
-                            <img src="/static/icons/like-outline.svg" width=16 alt="لوگوی لایک نشده"/>
+                            <img src="{% static 'img/like-outline.svg' %}" width=16 alt="لوگوی لایک نشده"/>
                         {% else %}
-                            <img src="/static/icons/like-fill.svg" width=16 alt="لوگوی لایک شده"/>
+                            <img src="{% static 'img/like-fill.svg' %}" width=16 alt="لوگوی لایک شده"/>
                         {% endif %}
                     </p>
                     <p>{{ post.comments_amount }} کامنت </p>

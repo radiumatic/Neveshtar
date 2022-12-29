@@ -35,7 +35,7 @@
         {% if user|has_group:"Writers" %}
             <aside class="actions">
                 <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}">
-                   <img src="{% static 'icons/pencil.svg' %}" alt="Edit" id="edit_icon"/>
+                   <img src="{% static 'img/pencil.svg' %}" alt="Edit" id="edit_icon"/>
                 </a>
             </aside>
         {% endif %}
@@ -46,20 +46,25 @@
             </time>
             <hr>
         {% endif %}
-        <h2 class="post_title ppp">{{ post.title }}</h2>
-        <hr>
+        <h2 id="post-title">{{ post.title }}</h2>
+        {% if post.thumbnail %}
+            <img src="{{ post.thumbnail.url }}" id="post-cover">
+        {% else %}
+            <img src="{% static 'img/no-cover.jpg' %}" id="post-cover">
+        {% endif %}
+        <hr class="start-hr">
         <div class="post-content">{{ post.text | markdown | safe }}</p>
         <hr class="sep-hr">
         <div id="like-and-comments-amount">
             <div id="like"><p id="like-count">{{ post.likes_amount }}</p>
                 {% if user.is_authenticated %}
                     {% if not user in post.liked_users %}
-                        <img src="/static/icons/like-outline.svg" width=16 class="btn-default" id="add-like" alt="اضافه کردن لایک"/>
+                        <img src="{% static 'img/like-outline.svg' %}" width=16 class="btn-default" id="add-like" alt="اضافه کردن لایک"/>
                     {% else %}
-                        <img src="/static/icons/like-fill.svg" width=16 class="btn-default" id="remove-like" alt="حذف لایک"/>
+                        <img src="{% static 'img/like-fill.svg' %}" width=16 class="btn-default" id="remove-like" alt="حذف لایک"/>
                     {% endif %}
                 {% else %}
-                    <img src="/static/icons/like-outline.svg" width=16 class="btn-default" id="like-logo" alt="لوگوی لایک"/>
+                    <img src="{% static 'img/like-outline.svg' %}" width=16 class="btn-default" id="like-logo" alt="لوگوی لایک"/>
                 {% endif %}
             </div>
             <p> {{ post.comments_amount }} کامنت</p>
