@@ -42,9 +42,9 @@
                     <div class="card-footer d-flex justify-content-sm-between">
                         <p> {{ post.likes_amount }} 
                             {% if not user in post.liked_users %}
-                                <img src="/static/icons/like-outline.svg" width=16 alt="لوگوی لایک نشده"/>
+                                <img src="{% static 'img/like-outline.svg' %}" width=16 alt="لوگوی لایک نشده"/>
                             {% else %}
-                                <img src="/static/icons/like-fill.svg" width=16 alt="لوگوی لایک شده"/>
+                                <img src="{% static 'img/like-fill.svg' %}" width=16 alt="لوگوی لایک شده"/>
                             {% endif %}
                         </p>
                         <p>{{ post.comments_amount }} کامنت </p>
