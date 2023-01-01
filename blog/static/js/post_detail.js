@@ -88,7 +88,7 @@ var add_func = function() {
             like_count = document.getElementById("like-count");
             //add one to likes count
             like_count.innerHTML = parseInt(like_count.innerHTML) + 1;
-            like_icon.src = "/static/icons/like-fill.svg";
+            like_icon.src = "/static/img/like-fill.svg";
             like_icon.id = "remove-like";
             like_icon.removeEventListener("click", add_func);
             like_icon.addEventListener("click", remove_func);
@@ -118,7 +118,7 @@ var remove_func = function() {
             like_count = document.getElementById("like-count");
             //remove one like from the count
             like_count.innerHTML = parseInt(like_count.innerHTML) - 1;
-            like_icon.src = "/static/icons/like-outline.svg";
+            like_icon.src = "/static/img/like-outline.svg";
             like_icon.id = "add-like";
             like_icon.removeEventListener("click", remove_func);
             like_icon.addEventListener("click", add_func);

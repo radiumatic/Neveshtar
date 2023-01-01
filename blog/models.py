@@ -34,6 +34,7 @@ class Post(models.Model):
     published_date = models.DateTimeField(
             blank=True, null=True)
     meta_description = models.CharField(default="توضیحات پست", max_length=150)
+    thumbnail = models.ImageField(upload_to="posts", null=True, blank=True)
     
 
 
